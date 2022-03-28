@@ -2,9 +2,10 @@ package co.com.sofka.stedefinitions.signin;
 
 import co.com.sofka.models.createaccount.CreateAccountModel;
 import co.com.sofka.models.signin.SignInModel;
-import co.com.sofka.stedefinitions.Setup;
+import co.com.sofka.stedefinitions.Setup.Setup;
 import co.com.sofka.util.State;
 import com.github.javafaker.Faker;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -32,8 +33,8 @@ public class SignInStepDefinition extends Setup {
     private final SignInModel userAccount = new SignInModel();
     private final Faker faker = new Faker();
 
-    @Given("que el usuario ya tiene una cuenta")
-    public void queElUsuarioYaTieneUnaCuenta() {
+    @Given("el cliente ya tiene una cuenta creada")
+    public void elClienteYaTieneUnaCuentaCreada() {
         actorSetupTheBrowser(ACTOR_NAME);
 
         account.setFirstName(faker.name().firstName());
@@ -57,8 +58,8 @@ public class SignInStepDefinition extends Setup {
         }
     }
 
-    @Given("accede al home para ir a la seccion de log in")
-    public void accedeAlHomeParaIrALaSeccionDeLogIn() {
+    @And("accede al home de la pagina y va a la seccion de log in")
+    public void accedeAlHomeDeLaPaginaYVaALaSeccionDeLogIn() {
         try {
             theActorInTheSpotlight()
                     .wasAbleTo(
@@ -70,8 +71,8 @@ public class SignInStepDefinition extends Setup {
         }
     }
 
-    @When("el usuario digita su email y su contrasena correctamente y valida la accion")
-    public void elUsuarioDigitaSuEmailYSuContrasenaCorrectamenteYValidaLaAccion() {
+    @When("el cliente digita su email y su contrasena correctamente y presiona signin")
+    public void elClienteDigitaSuEmailYSuContrasenaCorrectamenteYPresionaSignin() {
         userAccount.setEmail(account.getEmail());
         userAccount.setPassword(account.getPassword());
         try {
@@ -88,8 +89,8 @@ public class SignInStepDefinition extends Setup {
         }
     }
 
-    @Then("el usuario accede correctamente al inicio de su cuenta")
-    public void elUsuarioAccedeCorrectamenteAlInicioDeSuCuenta() {
+    @Then("el cliente accede correctamente a su cuenta")
+    public void elClienteAccedeCorrectamenteASuCuenta() {
         theActorInTheSpotlight()
                 .should(
                         seeThat("actual page shows the user name and a welcome message",
@@ -101,8 +102,8 @@ public class SignInStepDefinition extends Setup {
                 );
     }
 
-    @When("el usuario digita su email y una contrasena incorrecta y valida la accion")
-    public void elUsuarioDigitaSuEmailYUnaContrasenaIncorrectaYValidaLaAccion() {
+    @When("el cliente digita su email y su contrasena no es correcta al presionar signin")
+    public void elClienteDigitaSuEmailYSuContrasenaNoEsCorrectaAlPresionarSignin() {
         userAccount.setEmail(account.getEmail());
         userAccount.setPassword(faker.internet().password());
 
@@ -119,8 +120,8 @@ public class SignInStepDefinition extends Setup {
         }
     }
 
-    @Then("el usuario observa un mensaje de error por fallo en autenticacion")
-    public void elUsuarioObservaUnMensajeDeErrorPorFalloEnAutenticacion() {
+    @Then("el cliente recibe un mensaje de error en la autenticacion")
+    public void elClienteRecibeUnMensajeDeErrorEnLaAutenticacion() {
         theActorInTheSpotlight()
                 .should(
                         seeThat("there is an error message about failed authentication",
@@ -129,5 +130,8 @@ public class SignInStepDefinition extends Setup {
                         )
                 );
     }
+
+
+
 
 }

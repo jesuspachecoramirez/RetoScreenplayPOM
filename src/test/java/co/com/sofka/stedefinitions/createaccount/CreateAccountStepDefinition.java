@@ -1,7 +1,7 @@
 package co.com.sofka.stedefinitions.createaccount;
 
 import co.com.sofka.models.createaccount.CreateAccountModel;
-import co.com.sofka.stedefinitions.Setup;
+import co.com.sofka.stedefinitions.Setup.Setup;
 import co.com.sofka.util.State;
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.Given;
@@ -29,8 +29,8 @@ public class CreateAccountStepDefinition extends Setup {
     private final Faker faker = new Faker();
 
 
-    @Given("el usuario se encuentra en el home de la pagina")
-    public void elUsuarioSeEncuentraEnElHomeDeLaPagina() {
+    @Given("el cliente se encuentra en la pagina Authentication")
+    public void elClienteSeEncuentraEnLaPaginaAuthentication() {
         actorSetupTheBrowser(ACTOR_NAME);
         try {
             theActorInTheSpotlight()
@@ -42,8 +42,8 @@ public class CreateAccountStepDefinition extends Setup {
         }
     }
 
-    @When("el usuario ingresa en la seccion de registro y digita un email valido")
-    public void elUsuarioIngresaEnLaSeccionDeRegistroYDigitaUnEmailValido() {
+    @When("el cliente ingresa en la seccion de creacion de cuenta y digita un email valido")
+    public void elClienteIngresaEnLaSeccionDeCreacionDeCuentaYDigitaUnEmailValido() {
         newAccount.setEmail(faker.internet().safeEmailAddress());
         try {
             theActorInTheSpotlight()
@@ -57,8 +57,8 @@ public class CreateAccountStepDefinition extends Setup {
         }
     }
 
-    @Then("la pagina redirecciona al usuario correctamente para que ingrese su informacion")
-    public void laPaginaRedireccionaAlUsuarioCorrectamenteParaQueIngreseSuInformacion() {
+    @Then("la pagina redirecciona al cliente correctamente para que ingrese la informacion restante")
+    public void laPaginaRedireccionaAlClienteCorrectamenteParaQueIngreseLaInformacionRestante() {
         theActorInTheSpotlight()
                 .should(
                         seeThat("exist a form to fill user information",
@@ -68,8 +68,8 @@ public class CreateAccountStepDefinition extends Setup {
                 );
     }
 
-    @Given("que el usuario ha validado su correo y se encuentra en la seccion para rellenar su informacion")
-    public void queElUsuarioHaValidadoSuCorreoYSeEncuentraEnLaSeccionParaRellenarSuInformacion() {
+    @Given("El correo del cliente es valido y se encuentra en la seccion donde ingresa la informacion restante")
+    public void elCorreoDelClienteEsValidoYSeEncuentraEnLaSeccionDondeIngresaLaInformacionRestante() {
         newAccount.setEmail(faker.internet().emailAddress());
         try {
             theActorInTheSpotlight()
@@ -83,8 +83,8 @@ public class CreateAccountStepDefinition extends Setup {
         }
     }
 
-    @When("el usuario coloca su infomacion en los campos obligatorios y valida su accion")
-    public void elUsuarioColocaSuInfomacionEnLosCamposObligatoriosYValidaSuAccion() {
+    @When("el cliente ingresa su infomacion en los campos obligatorios y presiona register")
+    public void elClienteIngresaSuInfomacionEnLosCamposObligatoriosYPresionaRegister() {
         newAccount.setFirstName(faker.name().firstName());
         newAccount.setLastName(faker.name().lastName());
         newAccount.setPassword(faker.internet().password(5,15,true));
@@ -108,8 +108,8 @@ public class CreateAccountStepDefinition extends Setup {
                 );
     }
 
-    @Then("observa un mensaje de que su registro fue exitoso")
-    public void observaUnMensajeDeQueSuRegistroFueExitoso() {
+    @Then("recibe un mensaje de que su registro fue exitoso")
+    public void recibeUnMensajeDeQueSuRegistroFueExitoso() {
         theActorInTheSpotlight()
                 .should(
                         seeThat("actual page shows the user name and a welcome message",
@@ -120,4 +120,8 @@ public class CreateAccountStepDefinition extends Setup {
                         )
                 );
     }
+
+
+
+
 }

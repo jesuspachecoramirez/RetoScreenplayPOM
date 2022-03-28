@@ -1,8 +1,9 @@
 package co.com.sofka.stedefinitions.contactus;
 
 import co.com.sofka.models.contactus.ContactUsModel;
-import co.com.sofka.stedefinitions.Setup;
+import co.com.sofka.stedefinitions.Setup.Setup;
 import com.github.javafaker.Faker;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -26,8 +27,8 @@ public class ContactUsStepDefinition extends Setup {
     private final ContactUsModel user = new ContactUsModel();
     private final Faker faker = new Faker();
 
-    @When("el usuario visitante de la pagina se encuentra en el home")
-    public void elUsuarioVisitanteDeLaPaginaSeEncuentraEnElHome() {
+    @When("el cliente se encuentra en el home de la pagina")
+    public void elClienteSeEncuentraEnElHomeDeLaPagina() {
         actorSetupTheBrowser(ACTOR_NAME);
         try {
             theActorInTheSpotlight()
@@ -39,8 +40,8 @@ public class ContactUsStepDefinition extends Setup {
         }
     }
 
-    @Then("existe una opcion de Contact Us y accede")
-    public void existeUnaOpcionDeContactUsYAccede() {
+    @Then("valida una opcion de Contact Us e ingresa")
+    public void validaUnaOpcionDeContactUsEIngresa() {
         try {
             theActorInTheSpotlight()
                     .attemptsTo(
@@ -51,8 +52,8 @@ public class ContactUsStepDefinition extends Setup {
         }
     }
 
-    @Then("aparece un formulaio para llenar")
-    public void apareceUnFormulaioParaLlenar() {
+    @And("aparece un formulario que debe llenar")
+    public void apareceUnFormularioQueDebeLlenar() {
         theActorInTheSpotlight()
                 .should(
                         seeThat("exist a form to send a message",
@@ -62,8 +63,8 @@ public class ContactUsStepDefinition extends Setup {
                 );
     }
 
-    @Given("el usuario visitante se encuentra en la pagina de Contact us")
-    public void elUsuarioVisitanteSeEncuentraEnLaPaginaDeContactUs() {
+    @Given("el cliente se encuentra en la pagina de Contact us")
+    public void elClienteSeEncuentraEnLaPaginaDeContactUs() {
         actorSetupTheBrowser(ACTOR_NAME);
         try {
             theActorInTheSpotlight()
@@ -76,8 +77,8 @@ public class ContactUsStepDefinition extends Setup {
         }
     }
 
-    @When("llena la informacion de los campos obligatorios y valida su accion")
-    public void llenaLaInformacionDeLosCamposObligatoriosYValidaSuAccion() {
+    @When("llena la informacion de los campos obligatorios y presiona en enviar")
+    public void llenaLaInformacionDeLosCamposObligatoriosYPresionaEnEnviar() {
         user.setSubjectHeading(faker.number().numberBetween(1,2));
         user.setEmail(faker.internet().emailAddress());
         user.setMessage(faker.lorem().paragraph());
@@ -104,4 +105,8 @@ public class ContactUsStepDefinition extends Setup {
                                 equalTo(getSuccessSentMessage()))
                 );
     }
+
+
+
+
 }

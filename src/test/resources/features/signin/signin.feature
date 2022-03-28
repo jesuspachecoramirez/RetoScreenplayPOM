@@ -1,19 +1,19 @@
 # new feature
 # Tags: optional
 
-Feature: Log in para usuarios
-  Como cliente con una cuenta creada en la tienda de YourLogo
+Feature: Log in para Clientes
+  Como cliente poseo una cuenta en la tienda de YourLogo
   quiero poder iniciar sesion en la pagina web
-  para poder utilizar los servicios en linea que tienen
+  para poder utilizar los servicios de la misma
 
   Background: Cuenta existente en la pagina web
-    Given que el usuario ya tiene una cuenta
-    And accede al home para ir a la seccion de log in
+    Given el cliente ya tiene una cuenta creada
+    And accede al home de la pagina y va a la seccion de log in
 
-  Scenario: Log in de usuario exitoso
-    When el usuario digita su email y su contrasena correctamente y valida la accion
-    Then el usuario accede correctamente al inicio de su cuenta
+  Scenario: Log in de cliente exitoso
+    When el cliente digita su email y su contrasena correctamente y presiona signin
+    Then el cliente accede correctamente a su cuenta
 
-  Scenario: Log in de usuario fallido por contrasena incorrecta
-    When el usuario digita su email y una contrasena incorrecta y valida la accion
-    Then el usuario observa un mensaje de error por fallo en autenticacion
+  Scenario: Log in de cliente fallido por contrasena incorrecta
+    When el cliente digita su email y su contrasena no es correcta al presionar signin
+    Then el cliente recibe un mensaje de error en la autenticacion

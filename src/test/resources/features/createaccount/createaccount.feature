@@ -2,18 +2,18 @@
 # Tags: optional
 
 Feature: Creacion de nuevos usuarios
-  Como usuario de la tienda YourlOGO
+  Como cliente de la tienda YourlOGO
   quiero poder registrame en su pagina web
-  para tener acceso a sus servicios en linea
+  para tener acceso a los servicios de la misma
 
-  Background: Usuario accede a home de la pagina
-    Given el usuario se encuentra en el home de la pagina
+  Background: Cliente accede a la pagina
+    Given el cliente se encuentra en la pagina Authentication
 
   Scenario: Validacion de correo electronico exitoso
-    When el usuario ingresa en la seccion de registro y digita un email valido
-    Then la pagina redirecciona al usuario correctamente para que ingrese su informacion
+    When el cliente ingresa en la seccion de creacion de cuenta y digita un email valido
+    Then la pagina redirecciona al cliente correctamente para que ingrese la informacion restante
 
-  Scenario: Registro exitoso de nuevo usuario con campos obligatorios
-    Given que el usuario ha validado su correo y se encuentra en la seccion para rellenar su informacion
-    When el usuario coloca su infomacion en los campos obligatorios y valida su accion
-    Then observa un mensaje de que su registro fue exitoso
+  Scenario: Registro exitoso de nuevo cliente
+    Given El correo del cliente es valido y se encuentra en la seccion donde ingresa la informacion restante
+    When el cliente ingresa su infomacion en los campos obligatorios y presiona register
+    Then recibe un mensaje de que su registro fue exitoso

@@ -1,4 +1,4 @@
-package co.com.sofka.stedefinitions;
+package co.com.sofka.stedefinitions.Setup;
 
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actors.OnStage;
