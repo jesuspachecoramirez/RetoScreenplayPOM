@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Log in para usuarios" skipped="0" tests="2" time="82.49" timestamp="2022-03-26 09:11:06"><testcase name="Log in de usuario exitoso"/><testcase name="Log in de usuario fallido por contrasena incorrecta"/></testsuite>

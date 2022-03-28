@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Atencion al cliente para visitantes de la pagina web" skipped="0" tests="2" time="31.14" timestamp="2022-03-27 12:55:02"><testcase name="Visitante de la pagina quiere acceder a la opcion de Contact Us"/><testcase name="Envio de mensaje para contacto exitoso"/></testsuite>
